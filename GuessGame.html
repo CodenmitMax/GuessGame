@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GuessGame</title>
+	<script src='main_scripts.js'></script>
+	<link rel='stylesheet' href='main_styles.css'>
+</head>
+<body onload="initialisiere()">
+	<div id="deadscreen">
+		<div id="imgchange">
+			<div id="alles" >
+				<p id="ueberschrift"><u>Guess the Number!</u></p>
+				<br>
+				<h1 id='nennezahl'>Nenne eine Zahl von 1 - 30!</h1>
+				<div id="zuklein" class="anders">&nbsp;</div>
+				<div id="zuhoch" class="anders">&nbsp;</div> <br /> <br /> <br /> <br />
+				<div id='boxen'><br>
+					<input type="number" id="eingabe1" autofocus min="1" max="30"><br><br><br>
+					<input type="button" id="raten" value="Rate!" onclick="ausgeben(); klick();"><br>
+					<p id="trys">Versuche: <a id="zaehlen">5!</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="buttonmitte">
+		<input type="button" value="Try Again?" id="tryAgain" onclick="neustart()">
+	</div>
+</body>
+</html>

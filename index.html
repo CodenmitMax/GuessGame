@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Random Number Guesser</title>
+  <script>
+
+  let pw = '1234';
+  let name = 'Max';
+  let zaehler = 3;
+
+  function initialisiere() {
+    pw1.addEventListener("keyup", (event) => {
+      if (event.key == "Enter") {
+        anmelden();
+      }
+    })
+  }
+
+  function anmelden(){
+    let eingabebenutzer = document.getElementById('name1').value;
+    let pwbenutzer = document.getElementById('pw1').value;
+	let t;
+    if (eingabebenutzer == name && pwbenutzer == pw) {
+      window.open('GuessGame.html','_self').focus();
+    } else if (zaehler > 0) {
+      document.getElementById('wrongpw').innerHTML = 'Noch '+ zaehler +' Versuch'+((zaehler == 1)?"":"e")+'!';
+      	  t = setTimeout(clearAll, 3000);
+
+      zaehler--;
+    } else if (zaehler == 0) {
+      document.getElementById('wrongpw2').innerHTML = 'Passwort zu oft eingegeben';
+	    document.getElementById('wrongpw2').style.display = "block";
+	    document.getElementById('wrongpw').style.display = "none";
+      document.getElementById('wrongpw2').style.color = 'red';
+      document.getElementById('login').disabled = true;
+      document.getElementById('pw1').disabled = true;
+      document.getElementById('name1').disabled = true;
+    }
+  }
+
+  function clearAll() {
+    document.getElementById("wrongpw").innerHTML = '&nbsp;';
+  }
+
+  </script>
+</head>
+<body onload="initialisiere()">
+<h3><u>Welcome to Guess the Number!</u></h3>
+  <style>
+
+  h3 {
+    position: absolute;
+    top: 10px;
+    left: 130px;
+    color: rgba(0,100,100,.8);
+    font-size: 4em;
+    text-shadow: 1px 1px 2px black;
+  }
+
+  body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  #pweingabe {
+    text-align: center;
+    color: white;
+  }
+
+  #wrongpw {
+    color: white;
+    margin-left: 20px;
+    text-shadow: 1px 1px 2px white;
+  }
+  #wrongpw2 {
+    color: white;
+    margin-left: 20px;
+    text-shadow: 1px 1px 2px white;
+	z-index: 2;
+	display: none;
+  }
+  h2 {
+    font-size: 2em;
+    padding-left: 5px;
+    text-shadow: 1px 1px 2px white;
+    color: white;
+  }
+
+  #boxdrumrum {
+    height: 160px;
+    width: 390px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    border: 4px solid grey;
+    box-shadow: 3px 3px 5px white;
+    margin: 0 auto;
+    margin-top: 350px;
+    background-color: rgba(0,0,0,.5);
+  }
+
+  #verschiebibus {
+    padding-left: 10px;
+  }
+
+  #login {
+    background-color: rgba(0,0,0,.5);
+    width: 25%;
+    color: white;
+  }
+  #name1 {
+    background-color: rgba(100,100,100,.5);
+    width: 35%;
+    color: white;
+  }
+  #pw1 {
+    background-color: rgba(100,100,100,.5);
+    width: 30%;
+    color: white;
+  }
+
+  ::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+  }
+  </style>
+
+  <div id="boxdrumrum">
+    <div id="verschiebibus">
+
+      <h2><u>Passworteingabe</u></h2>
+      <p id="wrongpw">&nbsp;</p>
+	  <p id="wrongpw2">&nbsp;</p>
+      <input type="text" id="name1" placeholder="Name" autofocus>
+      <input type="password" id="pw1" placeholder="Passwort">
+      <input type="button" id="login" value='Anmelden' onclick="anmelden()">
+    </div>
+  </div>
+
+  <div id="pweingabe"></div>
+</body>
+</html>
